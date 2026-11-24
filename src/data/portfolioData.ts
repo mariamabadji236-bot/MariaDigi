@@ -123,45 +123,152 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'ideaflow',
     title: 'IdeaFlow',
-    subtitle: 'Espace de structuration et d’organisation d’idées',
-    nature: 'Concept UX/UI · Conception produit',
+    subtitle: 'Application mobile de capture, d’évaluation et de priorisation d’idées',
+    nature: 'Concept UX/UI · Application mobile',
     category: 'UX/UI Design',
     year: '2026',
     featured: true,
     summary:
-      'Conception d’une interface digitale pensée pour aider les créatifs, étudiants et porteurs de projets à capturer, trier et transformer leurs idées brutes en plans d’action structurés.',
+      'Conception d’une application mobile permettant de capturer ses idées, de les évaluer selon 3 critères (Utilité, Faisabilité, Potentiel), de les comparer et de sélectionner son projet prioritaire.',
     context:
-      'Les notes éparpillées entre messageries, carnets et captures d’écran rendent difficile le passage de l’inspiration initiale à un projet structuré et actionnable.',
+      'Les porteurs de projets accumulent souvent de nombreuses idées sans méthode claire pour les structurer, évaluer leur viabilité ni décider sur laquelle concentrer leurs efforts en priorité.',
     userNeed:
-      'Disposer d’un espace calme, visuellement hiérarchisé et sans surcharge cognitive pour centraliser ses idées par thématique et suivre leur progression.',
+      'Disposer d’un outil mobile clair et guidé pour centraliser ses idées par catégorie, les noter objectivement sur 15 points et comparer leurs scores avant de se lancer.',
     approach: [
-      'Définition du concept produit et cadrage des besoins utilisateurs autour de la prise de notes créative.',
-      'Architecture de l’information orientée clarté : capture rapide, catégorisation par projet et vue synthèse.',
-      'Conception des parcours principaux (ajout d’idée, regroupement, passage en mode structuration).',
-      'Design d’interfaces épurées mettant l’accent sur la lisibilité typographique et le confort visuel.',
+      'Cadrage du concept produit : « Organisez aujourd’hui, réalisez demain » autour de 4 onglets (Accueil, Mes idées, Comparer, Profil).',
+      'Structuration de la fiche idée : titre, description, problème identifié et catégorisation (Business, Technologies, Éducation, Autres).',
+      'Création d’un système d’évaluation simple sur 3 critères notés de 1 à 5 (Utilité, Faisabilité, Potentiel) générant un score sur 15.',
+      'Conception du comparateur de scores et de l’écran de confirmation pour valider l’idée prioritaire à développer.',
     ],
     personas: [
       {
+        name: 'Amadou Fall',
+        role: 'Jeune porteur de projet multi-idées',
+        need: 'Comparer objectivement plusieurs idées (livraison locale, formation, services) pour choisir la plus pertinente.',
+        frustration: 'Disperser son énergie sur trop d’idées à la fois faute de grille de lecture structurée.',
+      },
+      {
         name: 'Aminata, 24 ans',
-        role: 'Étudiante en design & créatrice de contenu',
-        need: 'Retrouver rapidement ses idées de projets et les organiser par étapes claires.',
-        frustration: 'Les outils trop complexes ralentissent la prise de note spontanée.',
+        role: 'Étudiante & créatrice de projets',
+        need: 'Capturer rapidement une idée dès qu’elle émerge et y associer le problème qu’elle résout.',
+        frustration: 'Perdre le fil de ses notes brutes éparpillées sans vision claire de leur potentiel.',
       },
     ],
     userFlow: [
-      'Capture rapide d’une nouvelle idée en un clic',
-      'Attribution à un espace ou thème de projet',
-      'Structuration en objectifs et sous-tâches',
-      'Passage en vue synthèse pour suivi de réalisation',
+      'Connexion / Inscription (e-mail, Google ou Apple)',
+      'Tableau de bord synthétique (nombre d’idées, évaluées et à évaluer)',
+      'Création ou modification d’une fiche idée avec problème identifié et catégorie',
+      'Évaluation multi-critères (Utilité, Faisabilité, Potentiel) et calcul du score final /15',
+      'Comparaison des idées évaluées et validation de l’idée prioritaire',
     ],
     deliverables: [
-      'Note de concept & proposition de valeur',
-      'Architecture des fonctionnalités clés',
-      'User Flow & Wireframes',
-      'Interfaces UI haute fidélité',
+      'Identité visuelle & Concept produit (« IdéaFlow »)',
+      'Architecture des écrans & User Flow complet',
+      '11 maquettes mobiles haute fidélité sur Figma',
     ],
     tools: ['Figma', 'Canva'],
     visualTheme: 'ideaflow',
+    prototypeScreens: [
+      {
+        id: 'if-login',
+        step: '01 · Accès',
+        title: 'Connexion',
+        description:
+          'Écran d’accueil avec l’identité IdéaFlow (« Organisez aujourd’hui, réalisez demain »), connexion par e-mail ou via Google et Apple.',
+        mediaType: 'image',
+        src: '/assets/aistudio/iPhone_16_Plus_-_1_d129615b.png',
+      },
+      {
+        id: 'if-signup',
+        step: '02 · Accès',
+        title: 'Inscription',
+        description:
+          'Création de compte fluide avec champs nom complet, e-mail, mot de passe masquable et options d’inscription rapide.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Inscription_28e92075.png',
+      },
+      {
+        id: 'if-dashboard',
+        step: '03 · Accueil',
+        title: 'Tableau de bord',
+        description:
+          'Vue centrale affichant le compteur d’idées (total, évaluées, à évaluer), l’accès rapide « Nouvelle idée » et les idées récentes.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Tableau_de_bord_f00a8583.png',
+      },
+      {
+        id: 'if-add',
+        step: '04 · Capture',
+        title: 'Nouvelle idée',
+        description:
+          'Formulaire structuré pour formuler le titre, la description, le problème identifié et choisir une catégorie (Business, Technologies, Éducation, Autres).',
+        mediaType: 'image',
+        src: '/assets/aistudio/Ajouter_une_id_e_0015d423.png',
+      },
+      {
+        id: 'if-list',
+        step: '05 · Bibliothèque',
+        title: 'Mes idées',
+        description:
+          'Liste de toutes les idées enregistrées avec recherche, filtre, statut d’évaluation et accès direct à la modification ou notation.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Mes_id_es_046e1f15.png',
+      },
+      {
+        id: 'if-edit',
+        step: '06 · Édition',
+        title: 'Modifier une idée',
+        description:
+          'Écran de mise à jour des informations d’une idée existante avec compteur de caractères sur le problème identifié.',
+        mediaType: 'image',
+        src: '/assets/aistudio/modifier_une_id_e_1722cd4b.png',
+      },
+      {
+        id: 'if-detail-pending',
+        step: '07 · Fiche',
+        title: 'Fiche de l’idée (À évaluer)',
+        description:
+          'Consultation détaillée d’une idée avant notation, avec son statut « À évaluer » et les boutons d’action vers l’évaluation ou l’édition.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Fiche_id_e_f40adc63.png',
+      },
+      {
+        id: 'if-evaluate',
+        step: '08 · Notation',
+        title: 'Évaluer mon idée',
+        description:
+          'Grille de notation de 1 à 5 sur trois critères guidés par des infobulles : Utilité, Faisabilité et Potentiel.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Evaluation_0c744c7f.png',
+      },
+      {
+        id: 'if-detail-scored',
+        step: '09 · Synthèse',
+        title: 'Fiche de l’idée (Évaluée)',
+        description:
+          'Affichage visuel des barres de score par critère, du Score Final sur 15 (12/15) et du bouton vers la comparaison.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Fiche_idee_evaluer_18c83bf3.png',
+      },
+      {
+        id: 'if-compare',
+        step: '10 · Décision',
+        title: 'Comparer mes idées',
+        description:
+          'Vue comparative mettant en avant l’idée obtenant le meilleur score (12/15 vs 10/15) pour aider à la prise de décision.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Comparer_603ab043.png',
+      },
+      {
+        id: 'if-confirm',
+        step: '11 · Validation',
+        title: 'Confirmation de priorité',
+        description:
+          'Écran final confirmant le choix de l’idée prioritaire avec récapitulatif complet des notes avant passage à l’action.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Confirmation_9cc1de31.png',
+      },
+    ],
   },
   {
     id: 'mairie-connect',
@@ -207,83 +314,447 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'karaange-kids',
     title: 'PEL Challenge — Karaange Kids',
-    subtitle: 'Application mobile de sensibilisation des enfants aux risques en ligne',
-    nature: 'Projet pratique · UX/UI Design',
+    subtitle: 'Application mobile ludique de protection des enfants de 7 à 12 ans en ligne',
+    nature: 'Projet collaboratif PEL Challenge · UX Research & UI',
     category: 'UX/UI Design',
     year: '2025 – 2026',
     featured: false,
+    role: 'UX Researcher · Groupe 3 (Car Rapide UX)',
     summary:
-      'Conception d’une application mobile éducative aidant les enfants à identifier les risques numériques et à comprendre comment demander de l’aide en toute sécurité.',
+      'Conception d’une application mobile éducative aidant les enfants de 7 à 12 ans à reconnaître les risques numériques, adopter les bons réflexes et oser demander de l’aide à un adulte de confiance.',
     context:
-      'Face à l’exposition croissante des plus jeunes aux écrans, il devient essentiel de proposer des repères pédagogiques accessibles et rassurants.',
+      'Les enfants de 7 à 12 ans utilisent Internet au quotidien mais ne savent pas toujours identifier une situation à risque ni à qui s’adresser. De leur côté, parents et enseignants manquent souvent de temps et de repères pratiques pour les accompagner.',
     userNeed:
-      'Proposer un environnement ludique et non anxiogène qui explique les bons réflexes numériques et facilite le dialogue avec un adulte de confiance.',
+      'Proposer des mises en situation courtes (5 à 10 minutes), visuelles, accessibles en audio et en plusieurs langues, avec un bouton clair « J’en parle » pour faciliter le dialogue avec un parent ou un enseignant.',
     approach: [
-      'Analyse de la problématique de sécurité en ligne adaptée au jeune public.',
-      'Définition des personas (enfant utilisateur et parent accompagnant).',
-      'Conception d’une maquette mobile haute fidélité claire et bienveillante.',
+      'Recherche : analyse des besoins et usages des enfants de 7 à 12 ans ainsi que des attentes des parents et enseignants.',
+      'Conception : création de parcours ludiques autour des mots de passe, des données personnelles, des inconnus en ligne et des contenus choquants.',
+      'Prototypage & Test : réalisation d’un prototype interactif sur Figma et tests utilisateurs pour valider la compréhension des consignes et le repérage du bouton « J’en parle ».',
+      'Amélioration : ajustement du prototype vers des contenus courts, visuels, accompagnés d’audio et adaptés aux connexions limitées.',
     ],
     personas: [
       {
-        name: 'Marième, 11 ans',
-        role: 'Élève utilisant une tablette familiale',
-        need: 'Comprendre simplement quoi faire face à un message inconnu ou gênant.',
-        frustration: 'Les avertissements techniques habituels sont difficiles à comprendre.',
+        name: 'El Hadj, 10 ans',
+        role: 'Élève de CE2 qui hésite à demander de l’aide',
+        need: 'Reconnaître une situation risquée, choisir une réaction adaptée et trouver les mots pour en parler.',
+        frustration: 'Ne sait pas à qui s’adresser ni comment aborder le sujet lorsqu’il se sent inquiet en ligne.',
+      },
+      {
+        name: 'Madame Ndao',
+        role: 'Enseignante (classe de +70 élèves) et mère d’élève',
+        need: 'Proposer une activité courte de 5 à 10 minutes avec contenus audio et savoir comment accueillir les questions des enfants.',
+        frustration: 'Manque de temps, de matériel et de visibilité sur les usages numériques à la maison.',
+      },
+      {
+        name: 'Mariama',
+        role: 'Mère très occupée',
+        need: 'Trouver des conseils simples et concrets pour ouvrir la discussion avec son enfant sans surveillance intrusive.',
+        frustration: 'Ne sait pas toujours comment formuler les repères de sécurité numérique sans inquiéter.',
       },
     ],
     userFlow: [
-      'Accueil adapté & choix du module de sensibilisation',
-      'Découverte d’un scénario interactif',
-      'Identification du bon réflexe',
-      'Bouton d’alerte / dialogue guidé vers un parent',
+      'Écran de bienvenue et sélection du profil (Enfant, Parent ou Enseignant)',
+      'Personnalisation de l’avatar animal et connexion simplifiée par code à 4 chiffres',
+      'Tableau de bord enfant (« Séance du soir ») et carte de progression « Les 7 aventures »',
+      'Défis interactifs (Le coffre secret, Mon jardin privé, Messages suspects) et quiz guidés',
+      'Bouton d’aide « J’en parle » et récompense par badge (« Super Détective »)',
     ],
     deliverables: [
-      'Cadrage de la problématique',
-      'Personas',
-      'Maquette mobile haute fidélité',
+      'Étude de la problématique & Personas (Enfant, Enseignant, Parent)',
+      'Parcours utilisateur & Architecture des 7 aventures',
+      'Maquettes mobiles haute fidélité & Prototype interactif Figma (P1 à P13)',
+      'Dossier de présentation complet du projet (18 diapositives)',
     ],
-    tools: ['Figma', 'Adobe Illustrator'],
+    tools: ['Figma', 'Adobe Illustrator', 'Canva'],
     visualTheme: 'karaange',
+    presentationPdfUrl:
+      '/assets/aistudio/Pr_sentation_Projet_Application_Mobile_Moderne_Noir_Rouge_7b143c7f.pdf',
+    prototypeScreens: [
+      {
+        id: 'kk-p1',
+        step: 'P1',
+        title: 'Écran d’accueil animé',
+        description:
+          'Introduction visuelle avec le logo Karaange Kids et le slogan « Les contes du baobab pour surfer en confiance ».',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_23_P1_6b81cd24.mp4',
+      },
+      {
+        id: 'kk-p2',
+        step: 'P2',
+        title: 'Sélection du profil',
+        description:
+          'Orientation immédiate selon l’utilisateur (Enfant, Parent ou Enseignant) avec mentions Protection de l’enfance, Langues nationales et conformité RGPD / CDP Sénégal.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Page_d_accueil_P2_85865425.png',
+      },
+      {
+        id: 'kk-p3',
+        step: 'P3',
+        title: 'Galerie de choix d’avatar',
+        description:
+          'Grille d’avatars animaux rassurants permettant à l’enfant de s’identifier sans saisir de données personnelles sensibles.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Avatar__P3_40483fc1.png',
+      },
+      {
+        id: 'kk-p3b',
+        step: 'P3 · Animé',
+        title: 'Aperçu animé de la grille avatar',
+        description:
+          'Animation d’apparition des options d’avatars et bouton audio d’accessibilité pour les plus jeunes lecteurs.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Avatar_c6998e5e.mp4',
+      },
+      {
+        id: 'kk-p4',
+        step: 'P4',
+        title: 'Validation de l’avatar choisi',
+        description:
+          'Sélection interactive de l’avatar lion et confirmation avant la création du code personnel.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Choix_Avatar_P4_fb28e611.mp4',
+      },
+      {
+        id: 'kk-p5',
+        step: 'P5',
+        title: 'Code d’accès simplifié',
+        description:
+          'Connexion ludique par code à 4 chiffres sur clavier numérique large adapté aux enfants de 7 à 12 ans.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Code_phone_P5_3d399d72.mp4',
+      },
+      {
+        id: 'kk-p6',
+        step: 'P6',
+        title: 'Accueil enfant & Séance du soir',
+        description:
+          'Tableau de bord personnalisé (« Salut, Soleil ! ») proposant une séance guidée de 8 minutes (Chansons, Épreuves, Quiz) et 4 univers dont « Oser parler ».',
+        mediaType: 'image',
+        src: '/assets/aistudio/07___Accueil_enfant_P6_5b376b53.png',
+      },
+      {
+        id: 'kk-p7',
+        step: 'P7',
+        title: 'Carte des 7 aventures',
+        description:
+          'Parcours progressif couvrant les mots de passe, la vie privée, les inconnus en ligne, les messages suspects et les contenus choquants.',
+        mediaType: 'image',
+        src: '/assets/aistudio/08___Les_7_aventures_P7_ee841d08.png',
+      },
+      {
+        id: 'kk-p8',
+        step: 'P8',
+        title: 'Aventure 1 : Le coffre secret',
+        description:
+          'Écran d’ouverture de la première aventure dédiée à la protection du mot de passe (« Un secret bien gardé ! »).',
+        mediaType: 'image',
+        src: '/assets/aistudio/09___Le_mot_de_passe_secret_P8_15fbe764.png',
+      },
+      {
+        id: 'kk-p9',
+        step: 'P9',
+        title: 'Épreuve « Le coffre secret »',
+        description:
+          'Mise en situation audio et choix binaire clair (« Je partage » / « Je garde ») pour ancrer le bon réflexe.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_16_P9_a1662e73.mp4',
+      },
+      {
+        id: 'kk-p10',
+        step: 'P10',
+        title: 'Interaction & validation de l’épreuve',
+        description:
+          'Enchaînement interactif des choix et passage à l’épreuve suivante avec repères visuels et sonores.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_P10_315b9c5c.mp4',
+      },
+      {
+        id: 'kk-p11',
+        step: 'P11',
+        title: 'Feedback d’erreur animé',
+        description:
+          'Animation de la carte « Oups, pas tout à fait ! » accompagnant l’enfant avec bienveillance vers une nouvelle tentative.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_P11_56c7f02c.mp4',
+      },
+      {
+        id: 'kk-oups',
+        step: 'Feedback',
+        title: 'Carte d’encouragement « Oups »',
+        description:
+          'Composant visuel conçu pour dédramatiser l’erreur et expliquer pourquoi une information peut ou non être partagée.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Carte-oups_2a85bd99.png',
+      },
+      {
+        id: 'kk-p12',
+        step: 'P12',
+        title: 'Aventure 2 : Mon jardin privé',
+        description:
+          'Apprentissage du tri entre informations publiques (animal préféré) et données privées à garder derrière la barrière.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_14_P12_e15fa9cb.mp4',
+      },
+      {
+        id: 'kk-p13',
+        step: 'P13',
+        title: 'Feedback de réussite « Bravo ! »',
+        description:
+          'Validation positive immédiate confirmant à l’enfant le bon comportement numérique.',
+        mediaType: 'video',
+        src: '/assets/aistudio/avanture_P13_aa19fc56.mp4',
+      },
+      {
+        id: 'kk-transition',
+        step: 'Transition',
+        title: 'Animation de suivi d’aventure',
+        description:
+          'Séquence animée de progression entre les défis et mises en situation.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_18_62655270.mp4',
+      },
+      {
+        id: 'kk-adv4',
+        step: 'Aventure 4',
+        title: 'Le drôle de message & « J’en parle »',
+        description:
+          'Présentation du mini-jeu « Détective des messages » avec accès direct au bouton d’alerte bienveillant « J’en parle ».',
+        mediaType: 'image',
+        src: '/assets/aistudio/39___Aventure___Messages_suspects_018e6b37.png',
+      },
+      {
+        id: 'kk-quiz',
+        step: 'Quiz',
+        title: 'Mise en situation : demande d’adresse',
+        description:
+          'Question 3/5 face à un inconnu en ligne : choix simples illustrés et bouton « Indice » pour guider l’enfant.',
+        mediaType: 'image',
+        src: '/assets/aistudio/Frame_22_e85d7ef6.png',
+      },
+      {
+        id: 'kk-badge',
+        step: 'Final',
+        title: 'Récompense « Super Détective »',
+        description:
+          'Écran final de célébration récompensant la réussite du quiz sur les dangers en ligne par un badge.',
+        mediaType: 'video',
+        src: '/assets/aistudio/Frame_48fec244.mp4',
+      },
+    ],
   },
   {
     id: 'sangalkam-mobilite',
     title: 'Mon quartier : un problème, une solution',
-    subtitle: 'Solution de transport de proximité à Sangalkam',
+    subtitle: 'Sangal Go — Application de transport de proximité à Sangalkam',
     nature: 'Projet pratique · UX/UI Design',
     category: 'UX/UI Design',
     year: '2025 – 2026',
     featured: false,
     summary:
-      'Étude des difficultés de déplacement rencontrées par les habitants de Sangalkam et conception d’une solution numérique de transport de proximité adaptée aux usages locaux.',
+      'Étude des difficultés de déplacement à Sangalkam et conception de Sangal Go : une application mobile simple, lisible en plein soleil et utilisable à une main pour réserver sa navette de proximité et suivre son trajet.',
     context:
-      'Les trajets quotidiens dans les zones périurbaines manquent parfois de régularité et d’information claire sur les points de prise en charge.',
+      'Les trajets quotidiens entre Sangalkam et Dakar Plateau, Rufisque ou Keur Massar manquent de visibilité sur les horaires de passage, les places disponibles et les points d’attente, avec des connexions mobiles parfois instables.',
     userNeed:
-      'Aider les habitants à repérer les trajets disponibles à proximité et à planifier leurs déplacements quotidiens plus sereinement.',
+      'Permettre aux habitants de choisir un point de regroupement proche (Carrefour Mosquée, Arrêt du marché), réserver une place avant le départ avec paiement à bord ou par mobile money (Wave, Orange Money) et conserver les informations de trajet même en réseau faible.',
     approach: [
-      'Étude de terrain et formulation de la problématique de mobilité locale.',
-      'Recherche utilisateur auprès des habitants et usagers réguliers.',
-      'Modélisation du parcours utilisateur et présentation de la solution digitale.',
+      'Définition de la direction artistique « Sangal Go » : lisible en plein soleil, utilisable à une main (boutons 54 px, texte 15 px minimum, pictogrammes accompagnés de mots).',
+      'Structuration de l’accueil usager autour des trajets fréquents (Travail, École, Marché) et de la prochaine navette disponible.',
+      'Conception du tunnel de réservation en 2 étapes : point de départ proche, destination, horaire, nombre de places et mode de paiement.',
+      'Prise en compte du mode réseau faible sur l’écran de suivi de trajet avec conservation des informations et appel direct au conducteur.',
     ],
     personas: [
       {
-        name: 'Ousmane, 29 ans',
-        role: 'Habitant effectuant des trajets quotidiens',
-        need: 'Trouver rapidement un transport de proximité fiable aux heures de pointe.',
-        frustration: 'Temps d’attente imprévisibles et manque de visibilité sur les passages.',
+        name: 'Awa Ndiaye',
+        role: 'Habitante effectuant des trajets quotidiens Sangalkam → Dakar Plateau',
+        need: 'Réserver rapidement une place au départ de Carrefour Mosquée, connaître le tarif (500 F) et suivre son arrivée en temps réel.',
+        frustration: 'Temps d’attente imprévisibles, manque de visibilité sur les places restantes et coupures réseau pendant le trajet.',
+      },
+      {
+        name: 'Moussa Diop',
+        role: 'Conducteur de minibus de proximité',
+        need: 'Regrouper les passagers réservés à un point précis (attente maximale de 3 minutes) pour fluidifier les départs.',
+        frustration: 'Arrêts dispersés et appels répétitifs pour localiser les passagers avant le départ.',
       },
     ],
     userFlow: [
-      'Localisation du point de départ à Sangalkam',
-      'Consultation des liaisons de proximité',
-      'Confirmation de la prise en charge',
+      'Écran de bienvenue et connexion par numéro de téléphone (+221) avec code SMS',
+      'Accueil personnalisé (« Bonjour, Awa ») et sélection d’un point de regroupement proche (Étape 1/2)',
+      'Choix de la destination (Étape 2/2 : Dakar Plateau, Rufisque, Keur Massar, UCAD) et de la navette',
+      'Réservation, sélection du nombre de places et du paiement (à bord, Wave, Orange Money) avec code SG-4821',
+      'Suivi du trajet en cours (mode réseau faible), évaluation à l’arrivée, historique et profil',
     ],
     deliverables: [
-      'Étude de problématique',
-      'Recherche & Parcours utilisateur',
-      'Présentation de la solution UX/UI',
+      'Direction artistique & Design System (Plus Jakarta Sans, Vert Sangal #0F7B4F, Ambre #F2B134)',
+      '3 parcours complets : Accueil/départ, Recherche/réservation, Trajet/historique/profil',
+      '15 écrans mobiles haute fidélité',
     ],
     tools: ['Figma', 'Google Workspace'],
     visualTheme: 'sangalkam',
+    prototypeHtmlBundleUrl:
+      '/assets/aistudio/Sangal_Go___Maquettes_haute_fid_lit__4846208a.html',
+    prototypeScreens: [
+      {
+        id: 'sg-da',
+        step: 'DA · Système',
+        title: 'Direction artistique & Design System',
+        description:
+          'Charte visuelle de Sangal Go : palette Vert Sangal (#0F7B4F), Menthe (#E6F4EC) et Ambre (#F2B134), typographie Plus Jakarta Sans et règles d’ergonomie terrain (boutons 54 px, lisible en plein soleil).',
+        mediaType: 'html',
+        boardFormat: 'landscape',
+        src: '/assets/sangal-go/direction-artistique.html',
+      },
+      {
+        id: 'sg-01',
+        step: '01 · Parcours 1',
+        title: 'Écran d’accueil (Splash)',
+        description:
+          'Écran de lancement affirmant l’identité Sangal Go et la promesse « Votre navette, près de chez vous ».',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-01.html',
+      },
+      {
+        id: 'sg-02',
+        step: '02 · Parcours 1',
+        title: 'Présentation du service',
+        description:
+          'Présentation en trois repères clairs : point proche de la maison, réservation avant départ et paiement à bord ou par mobile money.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-02.html',
+      },
+      {
+        id: 'sg-03',
+        step: '03 · Parcours 1',
+        title: 'Inscription & Connexion SMS',
+        description:
+          'Authentification simplifiée par numéro de téléphone (+221) avec validation claire et envoi de code par SMS.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-03.html',
+      },
+      {
+        id: 'sg-04',
+        step: '04 · Parcours 1',
+        title: 'Accueil usager (« Bonjour, Awa »)',
+        description:
+          'Tableau de bord avec recherche de destination, raccourcis rapides (Travail, École, Marché), prochaine navette (06:15) et trajets fréquents.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-04.html',
+      },
+      {
+        id: 'sg-05',
+        step: '05 · Parcours 1',
+        title: 'Point de départ (Étape 1 sur 2)',
+        description:
+          'Carte locale repérant les points de regroupement proches (Carrefour Mosquée à 2 min à pied, Arrêt du marché à 6 min) pour confirmer le départ.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-05.html',
+      },
+      {
+        id: 'sg-06',
+        step: '06 · Parcours 2',
+        title: 'Destination (Étape 2 sur 2)',
+        description:
+          'Recherche de destination avec suggestions fréquentes (Dakar Plateau, Rufisque, Keur Massar, UCAD) et destinations récentes.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-06.html',
+      },
+      {
+        id: 'sg-07',
+        step: '07 · Parcours 2',
+        title: 'Navettes disponibles',
+        description:
+          'Liste filtrable par créneau (Matin, Midi, Soir) affichant tarif, véhicule, point de départ et places restantes en un coup d’œil.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-07.html',
+      },
+      {
+        id: 'sg-08',
+        step: '08 · Parcours 2',
+        title: 'Détails du trajet & places',
+        description:
+          'Récapitulatif départ/arrivée, durée estimée (55 min), choix de l’horaire et sélecteur du nombre de places.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-08.html',
+      },
+      {
+        id: 'sg-09',
+        step: '09 · Parcours 2',
+        title: 'Réservation & moyen de paiement',
+        description:
+          'Choix entre paiement à bord, Wave ou Orange Money avec affichage transparent du montant total (500 F).',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-09.html',
+      },
+      {
+        id: 'sg-10',
+        step: '10 · Parcours 2',
+        title: 'Place réservée (Code SG-4821)',
+        description:
+          'Confirmation immédiate avec code de réservation SG-4821 envoyé par SMS et accès direct au point de départ.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-10.html',
+      },
+      {
+        id: 'sg-11',
+        step: '11 · Parcours 3',
+        title: 'Votre départ & conducteur',
+        description:
+          'Rappel de l’heure d’arrivée au point de regroupement (06:10), fiche du conducteur (Moussa Diop) et bouton de suivi.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-11.html',
+      },
+      {
+        id: 'sg-12',
+        step: '12 · Parcours 3',
+        title: 'Suivi du trajet & mode réseau faible',
+        description:
+          'Suivi de l’itinéraire vers Dakar Plateau (arrivée dans 32 min), bandeau d’alerte « Réseau faible : infos enregistrées » et appel conducteur.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-12.html',
+      },
+      {
+        id: 'sg-13',
+        step: '13 · Parcours 3',
+        title: 'Arrivée & évaluation du trajet',
+        description:
+          'Confirmation d’arrivée à Dakar Plateau, notation rapide par étoiles, rappel du règlement à bord et option de réserver le retour.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-13.html',
+      },
+      {
+        id: 'sg-14',
+        step: '14 · Parcours 3',
+        title: 'Mes réservations (À venir / Passées)',
+        description:
+          'Historique et trajets confirmés, terminés ou annulés avec dates, codes et montants.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-14.html',
+      },
+      {
+        id: 'sg-15',
+        step: '15 · Parcours 3',
+        title: 'Profil usager (Awa Ndiaye)',
+        description:
+          'Gestion du compte, points favoris, langue, moyens de paiement enregistrés (Wave) et aide.',
+        mediaType: 'html',
+        boardFormat: 'mobile',
+        src: '/assets/sangal-go/screen-15.html',
+      },
+    ],
   },
 ];
 
@@ -352,7 +823,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
       'Prototypage interactif & Tests utilisateurs',
     ],
     verificationNote:
-      'Emplacement prévu pour le lien officiel de vérification Coursera et l’aperçu numérique du certificat lors de la mise en ligne WordPress.',
+      'Certification Google UX Design suivie sur Coursera. Consultez l’aperçu du certificat ci-dessus ou accédez à la page officielle du programme sur Coursera.',
     verificationUrl: 'https://www.coursera.org/professional-certificates/google-ux-design',
   },
   {
@@ -369,7 +840,7 @@ export const CERTIFICATIONS: CertificationItem[] = [
       'SEO & Analyse des KPI',
     ],
     verificationNote:
-      'Emplacement prévu pour le visuel officiel du certificat et son lien de vérification authentifié.',
+      'Certification attestant de la maîtrise des stratégies digitales, du marketing de contenu, des réseaux sociaux, de l’email marketing et du SEO.',
   },
 ];
 

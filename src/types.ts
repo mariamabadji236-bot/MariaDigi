@@ -15,6 +15,16 @@ export interface PersonaItem {
   frustration: string;
 }
 
+export interface PrototypeScreenItem {
+  id: string;
+  step: string;
+  title: string;
+  description: string;
+  mediaType: 'image' | 'video' | 'html';
+  src: string;
+  boardFormat?: 'mobile' | 'landscape';
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -23,6 +33,7 @@ export interface ProjectItem {
   category: ProjectCategory;
   year: string;
   featured: boolean;
+  role?: string;
   summary: string;
   context: string;
   userNeed: string;
@@ -32,6 +43,9 @@ export interface ProjectItem {
   deliverables: string[];
   tools: string[];
   visualTheme: 'galsenfrika' | 'kerfacile' | 'ideaflow' | 'mairie' | 'karaange' | 'sangalkam';
+  presentationPdfUrl?: string;
+  prototypeHtmlBundleUrl?: string;
+  prototypeScreens?: PrototypeScreenItem[];
 }
 
 export interface SkillCategory {
@@ -50,6 +64,7 @@ export interface CertificationItem {
   competencies: string[];
   verificationNote: string;
   verificationUrl?: string;
+  certificateFileUrl?: string;
 }
 
 export interface EducationItem {

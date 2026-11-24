@@ -1,7 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, CheckCircle2, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  FileCode2,
+  FileText,
+  Film,
+  Image as ImageIcon,
+  Layout,
+  X,
+} from 'lucide-react';
 import { ProjectItem } from '../types';
 import { ProjectMockup } from './ProjectMockup';
+
+interface ScaledHtmlBoardProps {
+  src: string;
+  title: string;
+  nativeWidth: number;
+  nativeHeight: number;
+}
+
+const ScaledHtmlBoard: React.FC<ScaledHtmlBoardProps> = ({
+  src,
+  title,
+  nativeWidth,
+  nativeHeight,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const updateScale = () => {
+      if (el.clientWidth > 0) {
+        setScale(el.clientWidth / nativeWidth);
+      }
+    };
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [nativeWidth]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full h-full overflow-hidden bg-[#FFFFFF]"
+    >
+      <iframe
+        key={src}
+        src={src}
+        title={title}
+        scrolling="no"
+        className="border-0 block origin-top-left"
+        style={{
+          width: `${nativeWidth}px`,
+          height: `${nativeHeight}px`,
+          transform: `scale(${scale})`,
+        }}
+      />
+    </div>
+  );
+};
 
 interface CaseStudyModalProps {
   project: ProjectItem | null;
@@ -9,7 +72,7 @@ interface CaseStudyModalProps {
   onContactClick: () => void;
 }
 
-type TabKey = 'overview' | 'personas' | 'flow' | 'deliverables';
+type TabKey = 'overview' | 'prototype' | 'personas' | 'flow' | 'deliverables';
 
 export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   project,
@@ -17,9 +80,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   onContactClick,
 }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('overview');
+  const [screenIndex, setScreenIndex] = useState(0);
 
   useEffect(() => {
     setActiveTab('overview');
+    setScreenIndex(0);
   }, [project?.id]);
 
   useEffect(() => {
@@ -32,6 +97,25 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   }, [project, onClose]);
 
   if (!project) return null;
+
+  const screens = project.prototypeScreens ?? [];
+  const hasPrototype = screens.length > 0;
+  const activeScreen = screens[screenIndex] ?? screens[0];
+
+  const tabs: [TabKey, string][] = hasPrototype
+    ? [
+        ['overview', 'Vue d’ensemble'],
+        ['prototype', `Prototype & Écrans (${screens.length})`],
+        ['personas', 'Recherche & Personas'],
+        ['flow', 'User Flow & Parcours'],
+        ['deliverables', 'Livrables & Outils'],
+      ]
+    : [
+        ['overview', 'Vue d’ensemble'],
+        ['personas', 'Recherche & Personas'],
+        ['flow', 'User Flow & Parcours'],
+        ['deliverables', 'Livrables & Outils'],
+      ];
 
   return (
     <div
@@ -52,6 +136,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               <span>{project.nature}</span>
               <span aria-hidden="true">·</span>
               <span>{project.year}</span>
+              {project.role && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>{project.role}</span>
+                </>
+              )}
             </div>
             <h2
               id="case-study-title"
@@ -80,14 +170,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             role="tablist"
             aria-label="Sections de l’étude de cas"
           >
-            {(
-              [
-                ['overview', 'Vue d’ensemble'],
-                ['personas', 'Recherche & Personas'],
-                ['flow', 'User Flow & Parcours'],
-                ['deliverables', 'Livrables & Outils'],
-              ] as [TabKey, string][]
-            ).map(([key, label]) => (
+            {tabs.map(([key, label]) => (
               <button
                 key={key}
                 type="button"
@@ -134,6 +217,170 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'prototype' && hasPrototype && activeScreen && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                  <h3 className="font-serif text-xl text-[#34223F]">
+                    Parcours interactif du prototype
+                  </h3>
+                  <p className="text-sm text-[#34223F]/70 mt-1">
+                    Sélectionnez une étape dans l’ordre du parcours pour consulter chaque écran ou
+                    séquence animée.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setScreenIndex((prev) => Math.max(0, prev - 1))}
+                    disabled={screenIndex === 0}
+                    className="inline-flex items-center gap-1 px-3 py-2 rounded-lg border border-[#34223F]/15 text-xs font-medium text-[#34223F] hover:bg-[#F6ECFA] disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+                    aria-label="Écran précédent"
+                  >
+                    <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+                    <span>Précédent</span>
+                  </button>
+                  <span className="text-xs font-medium text-[#70428C] tabular-nums px-1">
+                    {screenIndex + 1} / {screens.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setScreenIndex((prev) => Math.min(screens.length - 1, prev + 1))
+                    }
+                    disabled={screenIndex === screens.length - 1}
+                    className="inline-flex items-center gap-1 px-3 py-2 rounded-lg border border-[#34223F]/15 text-xs font-medium text-[#34223F] hover:bg-[#F6ECFA] disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+                    aria-label="Écran suivant"
+                  >
+                    <span>Suivant</span>
+                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                {/* Ordered Chronological Playlist */}
+                <div className="lg:col-span-5 max-h-[460px] overflow-y-auto pr-1 space-y-2">
+                  {screens.map((item, idx) => {
+                    const isSelected = idx === screenIndex;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setScreenIndex(idx)}
+                        className={`w-full text-left p-3.5 rounded-xl border transition-colors cursor-pointer flex items-start gap-3 ${
+                          isSelected
+                            ? 'bg-[#F6ECFA] border-[#70428C]/45 text-[#34223F]'
+                            : 'bg-[#F8F6F9] border-[#34223F]/10 text-[#34223F]/80 hover:border-[#B58ACB]'
+                        }`}
+                      >
+                        <span
+                          className={`text-xs font-semibold tabular-nums mt-0.5 shrink-0 ${
+                            isSelected ? 'text-[#70428C]' : 'text-[#34223F]/55'
+                          }`}
+                        >
+                          {String(idx + 1).padStart(2, '0')}.
+                        </span>
+                        <div className="min-w-0 flex-1 space-y-0.5">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[11px] font-medium text-[#70428C]">
+                              {item.step}
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[11px] text-[#34223F]/55 shrink-0">
+                              {item.mediaType === 'video' ? (
+                                <>
+                                  <Film className="w-3 h-3" aria-hidden="true" />
+                                  <span>Vidéo</span>
+                                </>
+                              ) : item.mediaType === 'html' ? (
+                                <>
+                                  <Layout className="w-3 h-3" aria-hidden="true" />
+                                  <span>{item.boardFormat === 'landscape' ? 'Charte' : 'Maquette'}</span>
+                                </>
+                              ) : (
+                                <>
+                                  <ImageIcon className="w-3 h-3" aria-hidden="true" />
+                                  <span>Écran</span>
+                                </>
+                              )}
+                            </span>
+                          </div>
+                          <div className="text-sm font-medium text-[#34223F] truncate">
+                            {item.title}
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Stage Preview (Mobile Frame or Landscape Board) */}
+                <div className="lg:col-span-7 rounded-2xl bg-[#F8F6F9] border border-[#34223F]/10 p-5 sm:p-6 flex flex-col items-center gap-5">
+                  {activeScreen.mediaType === 'html' &&
+                  activeScreen.boardFormat === 'landscape' ? (
+                    <div className="w-full rounded-xl overflow-hidden border border-[#34223F]/15 bg-[#FFFFFF] shadow-md aspect-[1440/520]">
+                      <ScaledHtmlBoard
+                        src={activeScreen.src}
+                        title={`${activeScreen.step} — ${activeScreen.title}`}
+                        nativeWidth={1440}
+                        nativeHeight={520}
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full max-w-[270px] rounded-[1.75rem] bg-[#34223F] p-2.5 shadow-xl">
+                      <div className="rounded-[1.25rem] overflow-hidden bg-[#FFFFFF] aspect-[9/19] flex items-center justify-center">
+                        {activeScreen.mediaType === 'video' ? (
+                          <video
+                            key={activeScreen.src}
+                            src={activeScreen.src}
+                            controls
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-contain bg-[#FAF8F5]"
+                          />
+                        ) : activeScreen.mediaType === 'html' ? (
+                          <ScaledHtmlBoard
+                            src={activeScreen.src}
+                            title={`${activeScreen.step} — ${activeScreen.title}`}
+                            nativeWidth={390}
+                            nativeHeight={844}
+                          />
+                        ) : (
+                          <img
+                            key={activeScreen.src}
+                            src={activeScreen.src}
+                            alt={`${activeScreen.step} — ${activeScreen.title}`}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-contain bg-[#FAF8F5]"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="w-full text-center space-y-1.5 border-t border-[#34223F]/10 pt-4">
+                    <div className="text-xs font-semibold text-[#70428C]">
+                      {activeScreen.step} ·{' '}
+                      {activeScreen.mediaType === 'video'
+                        ? 'Prototype animé'
+                        : activeScreen.mediaType === 'html'
+                          ? activeScreen.boardFormat === 'landscape'
+                            ? 'Direction artistique'
+                            : 'Maquette haute fidélité'
+                          : 'Écran UI'}
+                    </div>
+                    <h4 className="font-serif text-lg text-[#34223F]">{activeScreen.title}</h4>
+                    <p className="text-sm text-[#34223F]/75 max-w-md mx-auto leading-relaxed">
+                      {activeScreen.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -214,6 +461,34 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                     </li>
                   ))}
                 </ul>
+
+                {project.presentationPdfUrl && (
+                  <div className="pt-3">
+                    <a
+                      href={project.presentationPdfUrl}
+                      download="Presentation_Karaange_Kids_Mariama_Badji.pdf"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#F6ECFA] border border-[#B58ACB]/40 text-sm font-medium text-[#70428C] hover:bg-[#70428C] hover:text-white transition-colors"
+                    >
+                      <FileText className="w-4 h-4" aria-hidden="true" />
+                      <span>Télécharger la présentation PDF (18 pages)</span>
+                      <Download className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+                )}
+
+                {project.prototypeHtmlBundleUrl && (
+                  <div className="pt-3">
+                    <a
+                      href={project.prototypeHtmlBundleUrl}
+                      download="Sangal_Go_Maquettes_haute_fidelite.html"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#F6ECFA] border border-[#B58ACB]/40 text-sm font-medium text-[#70428C] hover:bg-[#70428C] hover:text-white transition-colors"
+                    >
+                      <FileCode2 className="w-4 h-4" aria-hidden="true" />
+                      <span>Télécharger la planche complète (HTML)</span>
+                      <Download className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+                )}
               </div>
               <div className="space-y-4">
                 <h3 className="font-serif text-xl text-[#34223F]">Outils mobilisés</h3>

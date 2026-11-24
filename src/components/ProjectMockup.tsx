@@ -104,62 +104,210 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ theme, compact = f
   if (theme === 'ideaflow') {
     return (
       <div
-        className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#FFFFFF] via-[#F8F6F9] to-[#F6ECFA] border border-[#34223F]/10 p-5 flex flex-col justify-between select-none`}
-        aria-label="Aperçu interface IdeaFlow"
+        className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#F6ECFA] via-[#FFFFFF] to-[#EDE0F4] border border-[#34223F]/10 px-4 pt-4 pb-3 flex flex-col justify-between select-none`}
+        aria-label="Aperçu des maquettes mobiles IdeaFlow"
       >
-        <div className="flex items-center justify-between text-[11px] text-[#34223F]/65">
-          <span className="font-serif font-semibold text-[#34223F]">IdeaFlow</span>
-          <span>Workspace · Capture &amp; Tri</span>
+        <div className="flex items-center justify-between text-[11px] text-[#70428C] font-medium">
+          <span>IdéaFlow · Application mobile</span>
+          <span className="text-[#34223F]/60">Maquettes Figma</span>
         </div>
 
-        <div className="grid grid-cols-3 gap-2.5 my-auto">
-          <div className="rounded-lg bg-[#FFFFFF] border border-[#34223F]/10 p-3 space-y-2">
-            <div className="text-[10px] font-semibold text-[#70428C]">01. Capture</div>
-            <div className="h-2 w-4/5 rounded bg-[#F6ECFA]" />
-            <div className="h-2 w-3/5 rounded bg-[#34223F]/10" />
-            <div className="text-[10px] text-[#34223F]/70 pt-1">Note brute rapide</div>
+        <div className="flex-1 flex items-center justify-center gap-3 sm:gap-5 py-2 overflow-hidden">
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+            <img
+              src="/assets/aistudio/Tableau_de_bord_f00a8583.png"
+              alt="IdéaFlow — Tableau de bord"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
-          <div className="rounded-lg bg-[#F6ECFA] border border-[#B58ACB]/40 p-3 space-y-2">
-            <div className="text-[10px] font-semibold text-[#34223F]">02. Tri</div>
-            <div className="h-2 w-full rounded bg-[#B58ACB]/50" />
-            <div className="h-2 w-2/3 rounded bg-[#70428C]/35" />
-            <div className="text-[10px] text-[#34223F]/80 pt-1">Par thématique</div>
+
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0 translate-y-1.5">
+            <img
+              src="/assets/aistudio/Evaluation_0c744c7f.png"
+              alt="IdéaFlow — Évaluer mon idée"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
-          <div className="rounded-lg bg-[#34223F] p-3 space-y-2 text-white">
-            <div className="text-[10px] font-semibold text-[#F6ECFA]">03. Plan</div>
-            <div className="h-2 w-4/5 rounded bg-white/30" />
-            <div className="h-2 w-1/2 rounded bg-[#B58ACB]" />
-            <div className="text-[10px] text-white/80 pt-1">Actions claires</div>
-          </div>
+
+          {!compact && (
+            <div className="hidden sm:block h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+              <img
+                src="/assets/aistudio/Comparer_603ab043.png"
+                alt="IdéaFlow — Comparer mes idées"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          )}
         </div>
 
-        <div className="flex items-center justify-between text-[10px] text-[#34223F]/55 border-t border-[#34223F]/10 pt-2">
-          <span>Concept UX/UI</span>
-          <span>Architecture d’information</span>
+        <div className="flex items-center justify-between text-[10px] text-[#34223F]/60 border-t border-[#34223F]/10 pt-2">
+          <span>11 écrans UI complets</span>
+          <span>Capture · Évaluation · Priorisation</span>
         </div>
       </div>
     );
   }
 
-  const labelMap: Record<'mairie' | 'karaange' | 'sangalkam', { tag: string; title: string; detail: string }> = {
+  if (theme === 'karaange') {
+    return (
+      <div
+        className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#F6ECFA] via-[#F8F6F9] to-[#EDE0F4] border border-[#34223F]/10 px-4 pt-4 pb-3 flex flex-col justify-between select-none`}
+        aria-label="Aperçu des maquettes mobiles Karaange Kids"
+      >
+        <div className="flex items-center justify-between text-[11px] text-[#70428C] font-medium">
+          <span>Karaange Kids · PEL Challenge</span>
+          <span className="text-[#34223F]/60">Prototype mobile Figma</span>
+        </div>
+
+        <div className="flex-1 flex items-center justify-center gap-3 sm:gap-5 py-2 overflow-hidden">
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+            <img
+              src="/assets/aistudio/Page_d_accueil_P2_85865425.png"
+              alt="Karaange Kids — Sélection du profil (P2)"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0 translate-y-1.5">
+            <img
+              src="/assets/aistudio/07___Accueil_enfant_P6_5b376b53.png"
+              alt="Karaange Kids — Accueil enfant (P6)"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+
+          {!compact && (
+            <div className="hidden sm:block h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+              <img
+                src="/assets/aistudio/08___Les_7_aventures_P7_ee841d08.png"
+                alt="Karaange Kids — Les 7 aventures (P7)"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between text-[10px] text-[#34223F]/60 border-t border-[#34223F]/10 pt-2">
+          <span>19 écrans &amp; vidéos interactives</span>
+          <span>UX Research · UI Mobile</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (theme === 'sangalkam') {
+    return (
+      <div
+        className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#F6ECFA] via-[#FFFFFF] to-[#EDE0F4] border border-[#34223F]/10 px-4 pt-4 pb-3 flex flex-col justify-between select-none`}
+        aria-label="Aperçu des maquettes mobiles Sangal Go"
+      >
+        <div className="flex items-center justify-between text-[11px] text-[#70428C] font-medium">
+          <span>Sangal Go · Sangalkam</span>
+          <span className="text-[#34223F]/60">Maquettes haute fidélité</span>
+        </div>
+
+        <div className="flex-1 flex items-center justify-center gap-3 sm:gap-5 py-2 overflow-hidden">
+          {/* Screen 04: Accueil usager */}
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#D9E0DC] shadow-md shrink-0 p-2 flex flex-col gap-1.5 text-[#17211C]">
+            <div className="text-[7px] text-[#5C6862] leading-none">Bonjour,</div>
+            <div className="text-[11px] font-extrabold leading-none">Awa</div>
+            <div className="rounded-md border border-[#0F7B4F] px-1.5 py-1 text-[7px] text-[#5C6862] truncate">
+              Où allez-vous ?
+            </div>
+            <div className="rounded-lg bg-[#0F7B4F] text-white p-1.5 space-y-1">
+              <div className="text-[6px] text-[#CDEBDB]">Sangalkam → Dakar</div>
+              <div className="text-[12px] font-extrabold leading-none">06:15</div>
+              <div className="flex items-center gap-1 flex-wrap">
+                <span className="rounded-full bg-[#E6F4EC] text-[#0A5C3B] px-1.5 py-0.5 text-[6px] font-bold">
+                  Carrefour Mosquée
+                </span>
+                <span className="rounded-full bg-[#FFF1D0] text-[#6B4700] px-1.5 py-0.5 text-[6px] font-bold">
+                  4 places
+                </span>
+              </div>
+            </div>
+            <div className="rounded-md border border-[#E1E7E3] px-1.5 py-1 text-[6.5px] font-semibold truncate">
+              Sangalkam → Rufisque
+            </div>
+          </div>
+
+          {/* Screen 10: Place réservée SG-4821 */}
+          <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#D9E0DC] shadow-md shrink-0 translate-y-1.5 p-2 flex flex-col items-center justify-between text-center text-[#17211C]">
+            <div className="w-6 h-6 rounded-full bg-[#0F7B4F] text-white flex items-center justify-center text-[10px] font-bold mt-1">
+              ✓
+            </div>
+            <div className="space-y-0.5">
+              <div className="text-[9.5px] font-extrabold leading-tight">Place réservée !</div>
+              <div className="text-[6.5px] text-[#5C6862]">SMS envoyé</div>
+            </div>
+            <div className="w-full rounded-lg border border-[#E1E7E3] p-1.5 text-left space-y-0.5">
+              <div className="text-[6px] text-[#5C6862]">Code</div>
+              <div className="text-[10px] font-extrabold tracking-wider text-[#0F7B4F]">
+                SG-4821
+              </div>
+              <div className="text-[6px] text-[#5C6862] truncate">06:15 · 500 F à bord</div>
+            </div>
+            <div className="w-full rounded-md bg-[#0F7B4F] text-white py-1 text-[7px] font-bold">
+              Voir point de départ
+            </div>
+          </div>
+
+          {/* Screen 12: Suivi du trajet (hidden in compact) */}
+          {!compact && (
+            <div className="hidden sm:flex h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#D9E0DC] shadow-md shrink-0 p-2 flex-col justify-between text-[#17211C]">
+              <div>
+                <div className="text-[8.5px] font-bold leading-tight">Suivi du trajet</div>
+                <div className="text-[6.5px] text-[#5C6862]">Vers Dakar Plateau</div>
+              </div>
+              <div className="h-14 rounded-lg bg-[#E6F4EC] relative overflow-hidden flex items-center justify-center">
+                <svg viewBox="0 0 100 56" className="w-full h-full" aria-hidden="true">
+                  <path
+                    d="M15 44 Q45 30 58 24 T85 12"
+                    stroke="#0F7B4F"
+                    strokeWidth="2.5"
+                    strokeDasharray="2 3"
+                    fill="none"
+                  />
+                  <circle cx="15" cy="44" r="4" fill="#0F7B4F" />
+                  <circle cx="85" cy="12" r="4" fill="#F2B134" />
+                </svg>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="rounded-full bg-[#E6F4EC] text-[#0A5C3B] px-1.5 py-0.5 text-[6px] font-bold">
+                  Arrivée
+                </span>
+                <span className="text-[10px] font-extrabold">32 min</span>
+              </div>
+              <div className="rounded-md bg-[#FFF1D0] text-[#6B4700] px-1.5 py-1 text-[6px] font-medium leading-tight">
+                Réseau faible : infos enregistrées.
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between text-[10px] text-[#34223F]/60 border-t border-[#34223F]/10 pt-2">
+          <span>15 écrans &amp; charte graphique</span>
+          <span>3 parcours · Mobilité locale</span>
+        </div>
+      </div>
+    );
+  }
+
+  const labelMap: Record<'mairie', { tag: string; title: string; detail: string }> = {
     mairie: {
       tag: 'Administration locale · UX/UI',
       title: 'Suivi d’autorisation de construire',
       detail: 'Parcours citoyen & tableau agent · Diamaguène / Sicap Mbao',
     },
-    karaange: {
-      tag: 'Application mobile · Sensibilisation',
-      title: 'Karaange Kids — Sécurité en ligne',
-      detail: 'Parcours ludique enfant & alerte adulte de confiance',
-    },
-    sangalkam: {
-      tag: 'Mobilité de proximité · Sangalkam',
-      title: 'Mon quartier : transport local',
-      detail: 'Recherche terrain, repérage trajets & expérience usager',
-    },
   };
 
-  const info = labelMap[theme];
+  const info = labelMap[theme === 'mairie' ? 'mairie' : 'mairie'];
 
   return (
     <div
