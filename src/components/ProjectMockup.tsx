@@ -299,32 +299,51 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ theme, compact = f
     );
   }
 
-  const labelMap: Record<'mairie', { tag: string; title: string; detail: string }> = {
-    mairie: {
-      tag: 'Administration locale · UX/UI',
-      title: 'Suivi d’autorisation de construire',
-      detail: 'Parcours citoyen & tableau agent · Diamaguène / Sicap Mbao',
-    },
-  };
-
-  const info = labelMap[theme === 'mairie' ? 'mairie' : 'mairie'];
-
   return (
     <div
-      className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#F6ECFA] to-[#FFFFFF] border border-[#34223F]/10 p-5 flex flex-col justify-between select-none`}
-      aria-label={`Aperçu visuel ${info.title}`}
+      className={`relative w-full ${heightClass} overflow-hidden rounded-xl bg-gradient-to-br from-[#F6ECFA] via-[#FFFFFF] to-[#EDE0F4] border border-[#34223F]/10 px-4 pt-4 pb-3 flex flex-col justify-between select-none`}
+      aria-label="Aperçu des maquettes mobiles Mairie Connect"
     >
-      <div className="text-[11px] font-medium text-[#70428C]">{info.tag}</div>
-      <div className="bg-[#FFFFFF] rounded-lg border border-[#34223F]/10 p-4 shadow-sm space-y-2">
-        <div className="font-serif text-base text-[#34223F]">{info.title}</div>
-        <div className="text-xs text-[#34223F]/70">{info.detail}</div>
-        <div className="pt-2 flex gap-2">
-          <span className="h-1.5 w-12 rounded-full bg-[#70428C]" />
-          <span className="h-1.5 w-8 rounded-full bg-[#B58ACB]/60" />
-          <span className="h-1.5 w-6 rounded-full bg-[#F6ECFA]" />
-        </div>
+      <div className="flex items-center justify-between text-[11px] text-[#70428C] font-medium">
+        <span>Mairie Connect · Diamaguène / Sicap Mbao</span>
+        <span className="text-[#34223F]/60">Maquettes Figma</span>
       </div>
-      <div className="text-[10px] text-[#34223F]/55">Recherche · Personas · Parcours utilisateur</div>
+
+      <div className="flex-1 flex items-center justify-center gap-3 sm:gap-5 py-2 overflow-hidden">
+        <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+          <img
+            src="/assets/mairie-connect/01-accueil.png"
+            alt="Mairie Connect — Accueil"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+
+        <div className="h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0 translate-y-1.5">
+          <img
+            src="/assets/mairie-connect/07-documents.png"
+            alt="Mairie Connect — Permis de construire"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+
+        {!compact && (
+          <div className="hidden sm:block h-full max-h-[210px] aspect-[9/19] rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#34223F]/15 shadow-md shrink-0">
+            <img
+              src="/assets/mairie-connect/12-dashboard.png"
+              alt="Mairie Connect — Tableau de bord DSM Connect"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center justify-between text-[10px] text-[#34223F]/60 border-t border-[#34223F]/10 pt-2">
+        <span>13 écrans UI complets</span>
+        <span>Urbanisme · Vérification IA · Suivi</span>
+      </div>
     </div>
   );
 };

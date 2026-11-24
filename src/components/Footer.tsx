@@ -26,12 +26,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </p>
             <div className="pt-2">
               <a
-                href={PROFILE.cvPath}
-                download="CV_Mariama_Badji_MariaDigi.pdf"
+                href={PROFILE.cvPngPath}
+                download="CV_Mariama_Badji_MariaDigi.png"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#70428C] hover:text-[#34223F] transition-colors"
               >
                 <Download className="w-4 h-4" aria-hidden="true" />
-                <span>Télécharger mon CV (PDF)</span>
+                <span>Télécharger mon CV (PNG)</span>
               </a>
             </div>
           </div>

@@ -12,7 +12,8 @@ export const PROFILE = {
   phoneDisplay: '+221 77 674 16 32',
   whatsappUrl: 'https://wa.me/221776741632',
   linkedinUrl: 'https://www.linkedin.com/in/mariama-badji',
-  cvPath: '/assets/aistudio/CV_de_Mariama_BADJI_731eee76.pdf',
+  cvPath: '/assets/aistudio/CV_de_Mariama_BADJI_final_6788e281.pdf',
+  cvPngPath: '/assets/CV_Mariama_Badji_MariaDigi.png',
   portraitPath: '/assets/mariama-portrait.png',
   heroPortraitPath: '/assets/aistudio/WhatsApp_Image_2026-11-21_at_19.46.11_6b83fc15.jpeg',
 };
@@ -273,43 +274,170 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'mairie-connect',
     title: 'Mairie Connect',
-    subtitle: 'Parcours d’autorisation de construire à Diamaguène / Sicap Mbao',
+    subtitle: 'Démarches d’urbanisme & permis de construire à Diamaguène / Sicap Mbao',
     nature: 'Projet pratique · UX/UI Design',
     category: 'UX/UI Design',
     year: '2025 – 2026',
     featured: false,
     summary:
-      'Réflexion UX/UI sur l’amélioration du parcours de demande d’autorisation de construire et sur la transparence du suivi des dossiers pour les demandeurs et agents municipaux.',
+      'Conception UX/UI de l’application mobile Mairie Connect (DSM Connect) simplifiant les démarches d’urbanisme et le dépôt du permis de construire avec audio explicatif, pré-vérification IA des pièces (Aira) et suivi des dossiers.',
     context:
-      'Les démarches administratives locales souffrent souvent d’un manque de visibilité sur les pièces requises et sur l’état d’avancement des dossiers déposés.',
+      'Les demandes d’autorisation de construire à Diamaguène / Sicap Mbao nécessitent de réunir de nombreuses pièces administratives, domaniales et architecturales, avec un manque de visibilité fréquent sur l’avancement des dossiers.',
     userNeed:
-      'Clarifier chaque étape de dépôt pour le citoyen tout en facilitant le traitement et le suivi interne pour les agents de la mairie.',
+      'Guider pas à pas les citoyens sur les documents obligatoires ou facultatifs (y compris par audio), détecter les pièces non conformes avant soumission et offrir un tableau de bord clair de suivi des demandes.',
     approach: [
-      'Recherche utilisateur sur les blocages rencontrés lors des dépôts de dossiers.',
-      'Création des personas demandeurs et agents municipaux.',
-      'Cartographie des parcours utilisateurs et proposition d’un suivi de dossier lisible.',
+      'Structuration de l’accueil communal autour de 4 rubriques (Urbanisme disponible en ligne, État Civil, Action Sociale et Citoyenne, Fiscalité Locale) avec recherche et lecteur audio.',
+      'Conception de la fiche « Informations nécessaires » détaillant les conditions, la liste complète des pièces, le timbre fiscal, les délais (21 à 45 jours) et l’assistant conversationnel.',
+      'Organisation du formulaire de dépôt du permis de construire en 3 blocs (pièces administratives, justificatifs Impôts et Domaines, pièces techniques et architecturales) avec double vérification IA (Aira) et gestion explicite des erreurs.',
+      'Création du parcours d’authentification OTP, de la confirmation de dépôt et du tableau de bord DSM Connect (« Bonjour, Moussa ») ainsi que de la page de contact municipal.',
     ],
     personas: [
       {
-        name: 'Cheikh, 42 ans',
-        role: 'Demandeur d’autorisation',
-        need: 'Connaître la liste exacte des pièces et l’avancement réel de son dossier.',
-        frustration: 'Déplacements répétés à la mairie faute de visibilité à distance.',
+        name: 'Moussa',
+        role: 'Demandeur de permis de construire à Diamaguène / Sicap Mbao',
+        need: 'Déposer son dossier complet en ligne et suivre facilement l’état de ses demandes (En attente, Validée, Refusée).',
+        frustration: 'Allers-retours à la mairie à cause d’une pièce manquante ou non conforme (ex. CNI verso uniquement).',
+      },
+      {
+        name: 'Binetou Badji',
+        role: 'Habitante en recherche d’accompagnement administratif',
+        need: 'Contacter rapidement les services de la mairie par formulaire, téléphone ou e-mail en cas de question.',
+        frustration: 'Manque de repères clairs sur les horaires d’ouverture et les canaux de contact officiels.',
       },
     ],
     userFlow: [
-      'Vérification de la liste des pièces requises',
-      'Dépôt guidé de la demande',
-      'Réception d’un numéro de suivi',
-      'Consultation des étapes de validation par l’agent',
+      'Accueil Mairie Connect, sélection d’Urbanisme et consultation des informations et audio explicatif',
+      'Connexion / Inscription par numéro de téléphone, récupération de mot de passe et vérification Code OTP',
+      'Dépôt des pièces administratives, domaniales et techniques pour le permis de construire',
+      'Double vérification automatique des documents par Aira et correction guidée en cas d’erreur',
+      'Confirmation « Dépôt bien reçu ! », suivi en temps réel sur DSM Connect et contact municipal',
     ],
     deliverables: [
-      'Recherche utilisateur & Personas',
-      'Parcours demandeurs et agents',
-      'Concept de suivi de dossier',
+      'Architecture des rubriques communales & parcours Permis de construire',
+      'Parcours OTP, dépôt documentaire & vérification IA (Aira)',
+      '13 maquettes mobiles haute fidélité sur Figma',
     ],
     tools: ['Figma', 'Google Workspace'],
     visualTheme: 'mairie',
+    prototypeScreens: [
+      {
+        id: 'mc-01',
+        step: '01 · Accueil',
+        title: 'Accueil Mairie Connect',
+        description:
+          'Page d’accueil présentant les horaires de la commune (8h à 17h), un lecteur audio d’introduction, la recherche et les 4 pôles (Urbanisme, État Civil, Action Sociale, Fiscalité).',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/01-accueil.png',
+      },
+      {
+        id: 'mc-02',
+        step: '02 · Catégorie',
+        title: 'Rubrique Urbanisme',
+        description:
+          'Liste des 3 démarches disponibles en ligne : Permis de construire, Certificat d’urbanisme et Autorisation d’occuper ou de lotir.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/02-urbanisme.png',
+      },
+      {
+        id: 'mc-03',
+        step: '03 · Information',
+        title: 'Informations nécessaires',
+        description:
+          'Présentation détaillée (qui peut faire la demande, pièces à fournir, délais de 21 à 45 jours), lecteur audio et accès à l’assistant « Discutons Ensemble ! ».',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/03-informations.png',
+      },
+      {
+        id: 'mc-04',
+        step: '04 · Accès',
+        title: 'Connexion / Inscription',
+        description:
+          'Accès à l’espace citoyen par numéro de téléphone et mot de passe avec bascule Se connecter / S’inscrire.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/04-connexion.png',
+      },
+      {
+        id: 'mc-05',
+        step: '05 · Récupération',
+        title: 'Mot de passe oublié',
+        description:
+          'Choix du canal de réinitialisation par e-mail ou téléphone pour recevoir un code OTP sécurisé.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/05-mdp-oublie.png',
+      },
+      {
+        id: 'mc-06',
+        step: '06 · Sécurité',
+        title: 'Vérification Code OTP',
+        description:
+          'Saisie rapide du code à 4 chiffres reçu par message avant de poursuivre le dépôt de dossier.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/06-otp.png',
+      },
+      {
+        id: 'mc-07',
+        step: '07 · Dépôt',
+        title: 'Documents demandés (Permis de Construire)',
+        description:
+          'Formulaire structuré en 3 catégories (pièces administratives, justificatifs Impôts et Domaines, pièces techniques) avec statut Obligatoire / Facultatif.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/07-documents.png',
+      },
+      {
+        id: 'mc-08',
+        step: '08 · Analyse IA',
+        title: 'Aira — Première vérification',
+        description:
+          'Écran de transition rassurant informant l’usager que l’assistant Aira réalise la première vérification des documents joints.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/08-aira-1.png',
+      },
+      {
+        id: 'mc-09',
+        step: '09 · Analyse IA',
+        title: 'Aira — Deuxième vérification',
+        description:
+          'Seconde passe de contrôle de conformité administrative avant validation définitive du dossier.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/09-aira-2.png',
+      },
+      {
+        id: 'mc-10',
+        step: '10 · Correction',
+        title: 'Signalement d’erreur de pièces',
+        description:
+          'Retour précis expliquant les anomalies détectées (ex. CNI verso uniquement, demande Maire non conforme) avec bouton « Soumettre à nouveau ».',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/10-erreur.png',
+      },
+      {
+        id: 'mc-11',
+        step: '11 · Validation',
+        title: 'Confirmation « Dépôt bien reçu ! »',
+        description:
+          'Accusé de réception confirmant l’enregistrement du dossier et les notifications à chaque étape.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/11-confirmation.png',
+      },
+      {
+        id: 'mc-12',
+        step: '12 · Suivi',
+        title: 'Tableau de bord DSM Connect',
+        description:
+          'Vue citoyenne (« Bonjour, Moussa ») affichant les compteurs de demandes (En attente, Validé, Refusé), l’historique et le bouton Nouvelle demande.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/12-dashboard.png',
+      },
+      {
+        id: 'mc-13',
+        step: '13 · Support',
+        title: 'Nous contacter',
+        description:
+          'Formulaire de prise de contact avec les services municipaux et coordonnées directes de la mairie de Diamaguène Sicap Mbao.',
+        mediaType: 'image',
+        src: '/assets/mairie-connect/13-contact.png',
+      },
+    ],
   },
   {
     id: 'karaange-kids',

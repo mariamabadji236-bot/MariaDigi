@@ -53,12 +53,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProject 
               </button>
 
               <a
-                href={PROFILE.cvPath}
-                download="CV_Mariama_Badji_MariaDigi.pdf"
+                href={PROFILE.cvPngPath}
+                download="CV_Mariama_Badji_MariaDigi.png"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#FFFFFF] border border-[#34223F]/20 text-[#34223F] text-sm font-medium hover:bg-[#F6ECFA] hover:border-[#70428C]/40 transition-colors duration-200 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#70428C]"
               >
                 <Download className="w-4 h-4 text-[#70428C]" aria-hidden="true" />
-                <span>Télécharger mon CV</span>
+                <span>Télécharger mon CV (PNG)</span>
               </a>
             </div>
           </motion.div>

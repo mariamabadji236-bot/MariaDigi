@@ -130,12 +130,12 @@ export const ContactPage: React.FC = () => {
                 Voir mon LinkedIn
               </a>
               <a
-                href={PROFILE.cvPath}
-                download="CV_Mariama_Badji_MariaDigi.pdf"
+                href={PROFILE.cvPngPath}
+                download="CV_Mariama_Badji_MariaDigi.png"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#34223F]/15 text-[#34223F] text-sm font-medium hover:bg-[#F6ECFA] transition-colors"
               >
                 <Download className="w-4 h-4 text-[#70428C]" aria-hidden="true" />
-                <span>Télécharger CV</span>
+                <span>Télécharger CV (PNG)</span>
               </a>
             </div>
           </div>
